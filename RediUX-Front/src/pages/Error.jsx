@@ -1,9 +1,9 @@
-const Login = () => {
+const Error = () => {
   return (
     <main className="container flex justify-center items-center h-screen">
-      Login
+      Error
     </main>
   );
 };
 
-export default Login;
+export default Error;

@@ -1,9 +1,9 @@
-const Login = () => {
+const Content = () => {
   return (
     <main className="container flex justify-center items-center h-screen">
-      Login
+      Content
     </main>
   );
 };
 
-export default Login;
+export default Content;

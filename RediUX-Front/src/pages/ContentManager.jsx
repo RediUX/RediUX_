@@ -1,9 +1,9 @@
-const Login = () => {
+const ContentManager = () => {
   return (
     <main className="container flex justify-center items-center h-screen">
-      Login
+      ContentManager
     </main>
   );
 };
 
-export default Login;
+export default ContentManager;

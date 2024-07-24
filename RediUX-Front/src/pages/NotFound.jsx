@@ -1,9 +1,9 @@
-const Login = () => {
+const NotFound = () => {
   return (
     <main className="container flex justify-center items-center h-screen">
-      Login
+      NotFound
     </main>
   );
 };
 
-export default Login;
+export default NotFound;
