@@ -10,14 +10,16 @@ const DropdownField = ({
   width = "w-full",
 }) => {
   return (
-    <div className={`mb-4 ${width}`}>
-      <label className="block text-gray-700 text-sm font-bold mb-2">
-        {label}
-      </label>
+    <div className={`${width}`}>
+      {label && (
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          {label}
+        </label>
+      )}
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-10 ${
+        className={`shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-12 ${
           error ? "border-red-500" : ""
         }`}
       >

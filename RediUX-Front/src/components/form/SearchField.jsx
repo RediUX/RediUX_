@@ -11,23 +11,25 @@ const SearchField = ({
   width = "w-full",
 }) => {
   return (
-    <div className={`mb-4 ${width}`}>
-      <label className="block text-gray-700 text-sm font-bold mb-2">
-        {label}
-      </label>
+    <div className={`${width}`}>
+      {label && (
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          {label}
+        </label>
+      )}
       <div className="flex">
         <input
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className={`border rounded-l w-full py-2 px-3 text-gray-700 h-10 border-r-0
+          className={`border rounded-l w-full py-2 px-3 text-gray-700 h-12 border-r-0
             ${error ? "border-red-500" : ""}`}
           onKeyDown={(e) => e.key === "Enter" && onSearch()}
         />
         <button
           onClick={onSearch}
-          className="hover:bg-blue-700 py-2 px-3 rounded-r border h-10 border-l-0"
+          className="hover:bg-blue-700 py-2 px-3 rounded-r border h-12 border-l-0"
         >
           <BsSearch className="hover:opacity-40" />
         </button>

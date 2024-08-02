@@ -7,6 +7,7 @@ const StringField = ({
   placeholder,
   error,
   width = "w-full",
+  type = "text",
 }) => {
   return (
     <div className={`mb-4 ${width}`}>
@@ -14,11 +15,11 @@ const StringField = ({
         {label}
       </label>
       <input
-        type="text"
+        type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-10
+        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-12
             ${error ? "border-red-500" : ""}`}
       />
       {error && <p className="text-red-500 text-xs italic mt-2">{error}</p>}

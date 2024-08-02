@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <main
-      className="container flex flex-col justify-center items-center gap-8"
+      className=" flex flex-col justify-center items-center gap-8 p-16"
       style={{ minHeight: "calc(100vh - 7rem)" }}
     >
       <img
