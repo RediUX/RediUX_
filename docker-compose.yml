@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   backend:
     container_name: back-rediux
@@ -8,18 +8,25 @@ services:
       - "3000:3000"
     networks:
       - rediux-network
-
-  frontend:
-    container_name: front-rediux
-    build: ./RediUX-Front
-    image: rediux_frontend
-    ports:
-      - "8080:3000"
+  database:
+    image: postgres:latest
+    container_name: database_rediux
+    restart: always
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=rediux
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - rediux-network
-    depends_on:
-      - backend
+
+volumes:
+  postgres_data:
 
 networks:
   rediux-network:
     driver: bridge
+    

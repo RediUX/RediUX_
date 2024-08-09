@@ -1,0 +1,17 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "user",
+    "password": "password",
+    "database": "rediux",
+    "entities": [
+        "./src/modules/*/infra/typeorm/entity/*.ts"
+    ],
+    "migrations": [
+        "./src/shared/infra/typeorm/migration/*.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/shared/infra/typeorm/migration"
+    }
+}
