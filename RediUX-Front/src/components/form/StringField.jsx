@@ -7,6 +7,7 @@ const StringField = ({
   placeholder,
   error,
   width = "w-full",
+  type = "text",
 }) => {
   return (
     <div className={`mb-4 ${width}`}>
@@ -14,7 +15,7 @@ const StringField = ({
         {label}
       </label>
       <input
-        type="text"
+        type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}

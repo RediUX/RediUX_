@@ -16,7 +16,7 @@ const Home = () => {
 
   const validateSearch = () => {
     if (!search) {
-      setSearchError("Campo obrigatório");
+      setSearchError("O campo de busca não pode estar vazio.");
       return false;
     }
 

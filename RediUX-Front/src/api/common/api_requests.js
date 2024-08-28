@@ -20,6 +20,9 @@ const request = async (method, url, data = null, params = null) => {
       url,
       data,
       params,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     };
     const response = await axios(config);
     return response;

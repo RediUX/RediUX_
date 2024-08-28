@@ -9,7 +9,7 @@ export default {
       sans: ["Poppins", "sans-serif"],
     },
     colors: {
-      white: "#F9F9F7",
+      white: "#FFFFFF",
       black: "#212529",
       blue: {
         light: "#BECBEA",
@@ -17,6 +17,7 @@ export default {
         dark: "#0C2D8A",
       },
       gray: {
+        offwhite: "#F9F9F7",
         light: "#E9ECEF",
         DEFAULT: "#CED4DA",
         medium: "#6C757D",

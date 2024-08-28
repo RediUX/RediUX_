@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const Router = () => (
-  <BrowserRouter className="container mx-auto">
+  <BrowserRouter>
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
