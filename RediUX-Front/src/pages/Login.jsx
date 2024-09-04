@@ -30,7 +30,7 @@ const Login = () => {
 
   const handleLoginResult = (loginResult) => {
     if (loginResult) {
-      console.log(localStorage.getItem("userId"));
+      window.location.href = "/content-manager";
     }
   };
 

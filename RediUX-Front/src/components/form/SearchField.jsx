@@ -11,10 +11,12 @@ const SearchField = ({
   width = "w-full",
 }) => {
   return (
-    <div className={`mb-4 ${width}`}>
-      <label className="block text-gray-700 text-sm font-bold mb-2">
-        {label}
-      </label>
+    <div className={`${width}`}>
+      {label && (
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          {label}
+        </label>
+      )}
       <div className="flex">
         <input
           type="text"

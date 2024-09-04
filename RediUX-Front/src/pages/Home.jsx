@@ -32,13 +32,13 @@ const Home = () => {
 
   return (
     <main
-      className="container flex flex-col justify-center items-center gap-8"
+      className="container flex flex-col justify-center items-center gap-8 md:px-32"
       style={{ minHeight: "calc(100vh - 7rem)" }}
     >
       <img
         src="/img/hero_image.png"
         alt="RediUX Logo"
-        className="w-1/2 md:w-1/3 mb-16"
+        className="w-1/2 md:w-2/6 mb-16"
       />
       <div className="flex flex-col md:flex-row justify-center items-center w-full gap-4 ">
         <SearchField
