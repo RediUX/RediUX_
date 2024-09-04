@@ -29,8 +29,8 @@ const Login = () => {
   };
 
   const handleLoginResult = (loginResult) => {
-    if (loginResult?.status === 200) {
-      console.log(loginResult.data);
+    if (loginResult) {
+      console.log(localStorage.getItem("userId"));
     }
   };
 
@@ -43,7 +43,7 @@ const Login = () => {
 
   return (
     <main
-      className="container flex flex-col justify-center items-center bg-gray-light md:flex-row"
+      className="container flex flex-col justify-center items-center bg-gray-light md:flex-row gap-16"
       style={{ minHeight: "calc(100dvh - 7rem)", minWidth: "100vw" }}
     >
       <img
@@ -51,7 +51,7 @@ const Login = () => {
         alt="RediUX Logo"
         className="w-3/4 md:w-1/4 mb-8"
       />
-      <div className="flex flex-col justify-center items-center w-3/4 md:w-1/4 gap-4 bg-white p-8 rounded-lg md:py-24 md:px-16">
+      <div className="flex flex-col justify-center items-center w-3/4 md:w-2/6 gap-4 bg-white p-8 rounded-lg md:py-16 md:px-12">
         <img
           src="/img/horizontal_logo.png"
           alt="RediUX Logo"

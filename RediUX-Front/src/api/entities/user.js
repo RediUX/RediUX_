@@ -2,17 +2,24 @@ import * as httpRequests from "../common/api_requests";
 import { URLS } from "../common/endpoints";
 
 const fetchLogin = async (obj, callback) => {
-  console.log(obj);
-  console.log(URLS.USER + "/signin");
-  httpRequests.postMethod(URLS.USER + "/signin", obj).then(async (res) => {
-    const body = res.data;
-    if (body) {
-      localStorage.setItem("token", body.token);
-      localStorage.setItem("user", body.user);
-      localStorage.setItem("tokenExpiration", token.exp);
-      callback(body);
-    }
-  });
+  await httpRequests
+    .postMethod(URLS.USER + "/signin", obj)
+    .then(async (res) => {
+      const body = res.data;
+      if (body) {
+        localStorage.setItem("token", body.token);
+        localStorage.setItem("userId", body.user.id);
+        localStorage.setItem("userEmail", body.user.email);
+
+        callback(body);
+      }
+    });
 };
 
-export { fetchLogin };
+const fetchLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("userEmail");
+};
+
+export { fetchLogin, fetchLogout };
