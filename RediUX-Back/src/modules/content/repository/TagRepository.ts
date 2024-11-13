@@ -23,12 +23,23 @@ class TagRepository implements ITagRepository {
     return tag;
   }
 
-  async list(data: { name?: string }): Promise<Tag[]> {
-    const { name } = data;
-    const tags = await this.repository
-      .createQueryBuilder("tag")
-      .where(name ? { name } : {})
-      .getMany();
+  async list(data: {
+    name?: string;
+    page?: number;
+    limit?: number;
+  }): Promise<Tag[]> {
+    const { name, page = 1, limit = 10 } = data;
+    const queryBuilder = this.repository.createQueryBuilder("tag");
+
+    if (name) {
+      queryBuilder.where("tag.name LIKE :name", { name: `%${name}%` });
+    }
+    if (page && limit) {
+      const offset = (page - 1) * limit;
+      queryBuilder.skip(offset).take(limit);
+    }
+
+    const tags = await queryBuilder.getMany();
     return tags;
   }
 

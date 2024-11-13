@@ -70,14 +70,35 @@ class ContentRepository implements IContentRepository {
   this method returns a list of contents based on the id or title passed as a parameter
   if no parameter is passed, it returns all contents
   */
-  async list(data: { id?: number; title?: string }): Promise<Content[]> {
-    const { id, title } = data;
-    const contents = await this.repository
-      .createQueryBuilder("content")
-      .where(id ? { id } : {})
-      .andWhere(title ? { title } : {})
-      .getMany();
+  async list(data: {
+    id?: number;
+    title?: string;
+    page?: number;
+    limit?: number;
+    tag_id?: number;
+  }): Promise<Content[]> {
+    const { id, title, page = 1, limit = 10, tag_id } = data;
 
+    const queryBuilder = this.repository.createQueryBuilder("content");
+
+    if (tag_id) {
+      queryBuilder
+        .innerJoin("content.tags", "tag")
+        .where("tag.id = :tag_id", { tag_id });
+    }
+    if (id) {
+      queryBuilder.andWhere("content.id = :id", { id });
+    } else if (title) {
+      queryBuilder.andWhere("content.title LIKE :title", {
+        title: `%${title}%`,
+      });
+    }
+    if (page && limit) {
+      const offset = (page - 1) * limit;
+      queryBuilder.skip(offset).take(limit);
+    }
+
+    const contents = await queryBuilder.getMany();
     return contents;
   }
 

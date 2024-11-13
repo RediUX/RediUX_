@@ -4,11 +4,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "docker exec -it back-rediux npx ts-node src/shared/infra/typeorm/seed/admin.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:run": "docker exec -it back-rediux npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts",
     "migration:create": "cd ./src/shared/infra/typeorm/migration && typeorm-ts-node-commonjs migration:create",
-    "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/shared/infra/typeorm/migration/default"
+    "migration:generate": "docker exec -it back-rediux npx typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/shared/infra/typeorm/migration/default"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "pg": "^8.12.0",
     "reflect-metadata": "^0.2.2",
     "swagger-ui-express": "^5.0.1",
+    "ts-node": "^10.9.2",
     "tsyringe": "^4.8.0",
     "typeorm": "^0.3.20"
   },

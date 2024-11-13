@@ -11,7 +11,11 @@ class GetTagUseCase {
     private tagRepository: TagRepository,
   ) {}
 
-  async execute(data: { name?: string }): Promise<Tag[]> {
+  async execute(data: {
+    name?: string;
+    page?: number;
+    limit?: number;
+  }): Promise<Tag[]> {
     const tag = await this.tagRepository.list(data);
 
     if (!tag) {

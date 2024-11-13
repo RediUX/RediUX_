@@ -3,9 +3,12 @@ services:
   backend:
     container_name: back-rediux
     build: ./RediUX-Back
+    command: npm run dev
     image: rediux_backend
     ports:
       - "3000:3000"
+    volumes:
+      - ./RediUX-Back:/usr/app
     networks:
       - rediux-network
     depends_on:
