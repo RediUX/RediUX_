@@ -1,7 +1,7 @@
 import { ITagRepository } from "./interface/ITagRepository";
 import { Tag } from "../infra/typeorm/entity/Tag";
 import { AppDataSource } from "../../../data-source";
-import { Repository } from "typeorm";
+import { ILike, Repository } from "typeorm";
 
 class TagRepository implements ITagRepository {
   private repository: Repository<Tag>;
@@ -18,8 +18,17 @@ class TagRepository implements ITagRepository {
     return tag;
   }
 
+  async findById(id: number): Promise<Tag | null> {
+    const tag = await this.repository.findOne({
+      where: { id },
+    });
+    return tag;
+  }
+
   async findByName(name: string): Promise<Tag | null> {
-    const tag = await this.repository.findOne({ where: { name } });
+    const tag = await this.repository.findOne({
+      where: { name: ILike(name) },
+    });
     return tag;
   }
 
@@ -32,7 +41,7 @@ class TagRepository implements ITagRepository {
     const queryBuilder = this.repository.createQueryBuilder("tag");
 
     if (name) {
-      queryBuilder.where("tag.name LIKE :name", { name: `%${name}%` });
+      queryBuilder.where("tag.name ILIKE :name", { name: `%${name}%` });
     }
     if (page && limit) {
       const offset = (page - 1) * limit;

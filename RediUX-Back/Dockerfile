@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "npx ts-node src/shared/infra/typeorm/seed/admin.ts || true && npm run dev"]
+CMD ["npm", "run", "start"]

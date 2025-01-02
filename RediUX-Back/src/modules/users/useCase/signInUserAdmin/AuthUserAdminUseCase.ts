@@ -22,7 +22,7 @@ class AuthUserAdminUseCase {
     const user = await this.repository.findByEmail(email);
     const encryptProvider = container.resolve(EncryptProvider);
     if (!user) {
-      throw new AppError("User not found", 400);
+      throw new AppError("User not found", 404);
     }
 
     const passwordIsValid = await encryptProvider.compare(

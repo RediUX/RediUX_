@@ -1,5 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../../shared/erros/AppError";
 import { Tag } from "../../infra/typeorm/entity/Tag";
 
 import { TagRepository } from "../../repository/TagRepository";
@@ -17,10 +16,6 @@ class GetTagUseCase {
     limit?: number;
   }): Promise<Tag[]> {
     const tag = await this.tagRepository.list(data);
-
-    if (!tag) {
-      throw new AppError("Tag not found");
-    }
     return tag;
   }
 }
